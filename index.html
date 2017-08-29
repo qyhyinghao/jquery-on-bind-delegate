@@ -1,0 +1,46 @@
+<html>
+    <head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+    <body>
+    <div>
+      <button id="btn">添加新的p元素</button>
+      <p>第一个p元素</p>
+      <p>第二个p元素</p>
+      <p>第三个p元素</p>
+      <p>第四个p元素</p>
+      <p>第五个p元素</p>
+    </div>
+    
+    <script>
+    $("#btn").click(function(){
+      
+      $("div").append("<p>这是一个新的p元素</p>");
+    });
+
+    $("div p").bind("click",function(){
+        console.log("bind");
+        console.log(this);
+    });
+
+    $("div").delegate("p","click",function(e){
+        console.log('delegate');      
+        console.log(this);   
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(e);
+    });
+
+    $("div").on("click",'p',function(e){
+        console.log('on');       
+        console.log(this);      
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(e);
+    });
+    </script>
+    
+    </body>
+</html>
